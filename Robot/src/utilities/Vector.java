@@ -1,7 +1,38 @@
 package utilities;
 
 public class Vector {
-	double x,y,z;
+	private double x,y,z;
+	
+	/**
+	 * Returns the X component of the vector.
+	 * @return
+	 */
+	public double getX(){
+		return x;
+	}
+	
+	/**
+	 * Returns the Y component of the vector.
+	 * @return
+	 */
+	public double getY(){
+		return y;
+	}
+	
+	/**
+	 * Returns the Z component of the vector
+	 * @return
+	 */
+	public double getZ(){
+		return z;
+	}
+	
+	/**
+	 * Constructor for vector <x, y, z>
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 	public Vector(double x, double y, double z){
 		this.x = x;
 		this.y = y;
@@ -9,18 +40,38 @@ public class Vector {
 		
 	}
 	
+	/**
+	 * Adds two vectors together and returns the result.
+	 * @param other
+	 * @return
+	 */
 	public Vector add(Vector other){
 		return new Vector(x+other.x, y+other.y, z+other.z);
 	}
 	
+	/**
+	 * Subtracts other from this vector and returns the result.
+	 * @param other
+	 * @return
+	 */
 	public Vector subtract(Vector other){
 		return new Vector(x-other.x, y-other.y, z-other.z);
 	}
 	
+	/**
+	 * Finds the dot product of this vector and the other vector.
+	 * @param other
+	 * @return
+	 */
 	public double dot(Vector other){
 		return x*other.x + y*other.y + z*other.z;
 	}
 	
+	/**
+	 * Returns the cross product of this vector and the other vector in that order.
+	 * @param other
+	 * @return
+	 */
 	public Vector cross(Vector other){
 		return new Vector(
 				y*other.z - z*other.y,
@@ -29,23 +80,45 @@ public class Vector {
 				);
 	}
 	
+	/**
+	 * Returns the magnitude of the vector,
+	 * @return
+	 */
 	public double magnitude(){
 		return Math.sqrt(x*x + y*y + z*z);
 	}
 	
+	/**
+	 * Returns the magnitude squared of the vector.
+	 * @return
+	 */
 	public double magnitudeSquared(){
 		return x*x + y*y + z*z;
 	}
 	
+	/**
+	 * Returns a unit vector pointing in the direction of this vector.
+	 * @return
+	 */
 	public Vector normalize(){
 		double mag = magnitude();
 		return new Vector(x/mag, y/mag, z/mag);
 	}
 	
+	/**
+	 * Returns true if this vector equals the other vector, otherwise it returns false.
+	 * @param other
+	 * @return
+	 */
 	public boolean equals(Vector other){
 		return x == other.x && y == other.y && z == other.z;
 	}
 	
+	/**
+	 * Returns this vector scaled by a scale factor.
+	 * @param factor
+	 * @return
+	 */
 	public Vector scale(double factor){
 		return new Vector(x*factor, y*factor, z*factor);
 	}
