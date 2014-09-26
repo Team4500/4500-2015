@@ -123,8 +123,26 @@ public class Vector {
 		return new Vector(x*factor, y*factor, z*factor);
 	}
 	
+	/*
+	 * Rotates the vector about the Z axis theta radians with positive 
+	 * being counterclockwise looking down onto the vector (in the -Z direction)
+	 */
+	public Vector rotateAboutZAxis(double theta){
+		double newX = x*Math.cos(theta) - y*Math.sin(theta);
+		double newY = x*Math.sin(theta) + y*Math.cos(theta);
+		
+		return new Vector(newX, newY, z);
+		
+		
+	}
+	
+	public String toString(){
+		return "<"+x+", "+y+", "+z+">";
+	}
+	
+	
 	public static void main(String[] args){
-		Vector a = new Vector(1,1,1);
+		/*Vector a = new Vector(1,1,1);
 		Vector b = new Vector(1,1,1);
 		Vector f = new Vector(2,2,2);
 		
@@ -140,6 +158,10 @@ public class Vector {
 		(c.normalize().equals(c))+ " " +
 		(c.cross(d).equals(new Vector(0,0,1)))); //running tests
 		
+		c.cross(d);*/
+		
+		Vector a = new Vector(0,1,0);
+		System.out.println(a+" "+a.rotateAboutZAxis(Math.PI/2));
 		
 	}
 }
