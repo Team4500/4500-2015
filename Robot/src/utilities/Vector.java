@@ -123,9 +123,11 @@ public class Vector {
 		return new Vector(x*factor, y*factor, z*factor);
 	}
 	
-	/*
+	/**
 	 * Rotates the vector about the Z axis theta radians with positive 
 	 * being counterclockwise looking down onto the vector (in the -Z direction)
+	 * @param theta
+	 * @return
 	 */
 	public Vector rotateAboutZAxis(double theta){
 		double newX = x*Math.cos(theta) - y*Math.sin(theta);
@@ -135,6 +137,30 @@ public class Vector {
 		
 		
 	}
+
+	/**
+	 * Returns the smallest angle between this vector and the other vector
+	 * @param other
+	 */
+	public double getAngleBetween(Vector other){
+		return Math.acos(dot(other)/(magnitude() * other.magnitude()));
+	}
+	
+	/**
+	 * Returns the counterclockwise angle between this vector and the other vector
+	 * in the range -pi(exclusive) to pi(inclusive) as seen from above the origin or as looking down on the robot.
+	 * @param other
+	 * @return
+	 */
+	public double getCounterclockwiseAngleBetween(Vector other){
+		double sign = Math.signum(cross(other).getZ()); //the sign of the cross product - will be zero if the vectors are paralell
+		
+		if(sign!=0){
+			return  sign*getAngleBetween(other);
+		}else{
+			return getAngleBetween(other);
+		}
+	}
 	
 	public String toString(){
 		return "<"+x+", "+y+", "+z+">";
@@ -142,26 +168,7 @@ public class Vector {
 	
 	
 	public static void main(String[] args){
-		/*Vector a = new Vector(1,1,1);
-		Vector b = new Vector(1,1,1);
-		Vector f = new Vector(2,2,2);
 		
-		Vector c = new Vector(1,0,0);
-		Vector d = new Vector(0,1,0);
-		Vector e = new Vector(1,-1,1);
-		
-		System.out.println(a.equals(b) + " " +
-		(a.add(b).equals(f))+ " " +
-		(e.magnitude() == Math.sqrt(3))+ " " +
-		(a.scale(4).equals(new Vector(4,4,4)))+ " " +
-		(a.dot(b) == 3.0)+ " " +
-		(c.normalize().equals(c))+ " " +
-		(c.cross(d).equals(new Vector(0,0,1)))); //running tests
-		
-		c.cross(d);*/
-		
-		Vector a = new Vector(0,1,0);
-		System.out.println(a+" "+a.rotateAboutZAxis(Math.PI/2));
 		
 	}
 }
