@@ -3,6 +3,7 @@ package skeleton;
 import utilities.Vector;
 
 public class Wheel {
+	@SuppressWarnings("unused")
 	private Vector position, direction; // position represents the location of the wheel with respect to the
 										//center of the robot with +y being towards the front and +x being to the right
 										//facing towards the front
@@ -18,6 +19,10 @@ public class Wheel {
 	
 	public void setDirection(Vector linearMovement, Vector angularMovement){
 		this.direction = linearMovement.add(angularMovement.cross(position));
+	}
+	
+	public Vector getDirection(){
+		return direction;
 	}
 	
 	public static void main(String[] args){

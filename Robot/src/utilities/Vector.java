@@ -1,6 +1,8 @@
 package utilities;
 
 public class Vector {
+	public static final Vector zero = new Vector(0,0,0);
+	
 	private double x,y,z;
 	
 	/**
