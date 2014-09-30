@@ -25,7 +25,5 @@ public class Wheel {
 		return direction;
 	}
 	
-	public static void main(String[] args){
-		
-	}
+	
 }
