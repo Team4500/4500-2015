@@ -17,7 +17,7 @@ public class Wheel {
 		this.direction = new Vector(0,0,0);
 	}
 	
-	public void setDirection(Vector linearMovement, Vector angularMovement){
+	public void setDirection(Vector linearMovement, Vector angularMovement, Vector position){
 		this.direction = linearMovement.add(angularMovement.cross(position));
 	}
 	
